@@ -7,8 +7,8 @@ function startScanner() {
   html5QrCode.start(
     { facingMode: 'environment' },
     {
-      fps: 10,
-      qrbox: function(w, h) { var s = Math.min(w, h) * 0.72; return { width: s, height: s }; },
+      fps: 25,
+      qrbox: function(w,h){ var s=Math.min(w,h)*0.55; return {width:s,height:s}; },
       aspectRatio: 1.0
     },
     onScanSuccess,
