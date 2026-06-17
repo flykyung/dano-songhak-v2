@@ -38,6 +38,8 @@ function updateExecuteButton() {
     modeReady = Number(document.getElementById('amountInput').value) > 0;
   } else if (state.boothKey === 'soap') {
     modeReady = true;
+  } else if (state.boothKey === 'market') {
+    modeReady = true;
   } else if (state.boothKey === 'food') {
     modeReady = document.getElementById('foodSelect').value !== '';
   }
@@ -51,6 +53,7 @@ function resetTxForm() {
   document.getElementById('foodSelect').value  = '';
   showEl('duplicateWarning', false);
   showEl('fixedAmountWrap',  false);
+  showEl('marketAmountWrap', false);
   showEl('foodSelectWrap',   false);
   showEl('amountWrap',       false);
   showEl('pinWrap',          true);
