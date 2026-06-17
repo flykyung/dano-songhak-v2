@@ -1,1 +1,264 @@
+:root {
+  --dano-green: #2d6a4f;
+  --dano-green-light: #40916c;
+  --dano-gold: #d4a017;
+  --dano-pink: #e07a5f;
+  --dano-blue: #3d5a80;
+  --shadow-soft: 0 8px 32px rgba(45,106,79,0.12);
+  --content-max: 720px;
+  --content-pad: 1.5rem;
+}
 
+* { box-sizing: border-box; }
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  background: linear-gradient(165deg, #fefae0 0%, #edf6f0 45%, #d8f3dc 100%);
+  min-height: 100vh;
+  color: #1b4332;
+  padding-bottom: 2rem;
+}
+
+.app-header {
+  background: linear-gradient(135deg, var(--dano-green) 0%, var(--dano-green-light) 100%);
+  color: #fff;
+  padding: 1.4rem 1rem 1.75rem;
+  border-radius: 0 0 1.75rem 1.75rem;
+  box-shadow: var(--shadow-soft);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.app-header::before,
+.app-header::after {
+  content: '';
+  position: absolute;
+  width: 160px; height: 160px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.08);
+}
+
+.app-header::before { top: -50px; left: -40px; }
+.app-header::after  { bottom: -60px; right: -30px; }
+
+.app-title {
+  font-family: 'Gowun Dodum', 'Noto Sans KR', sans-serif;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  margin: 0;
+  position: relative; z-index: 1;
+}
+
+.app-subtitle {
+  font-size: clamp(0.82rem, 1.5vw, 1rem);
+  opacity: 0.9;
+  margin-top: 0.35rem;
+  position: relative; z-index: 1;
+}
+
+.main-container {
+  width: 100%;
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 1.5rem var(--content-pad) 0;
+}
+
+@media (min-width: 768px) {
+  :root { --content-pad: 2.5rem; }
+  .btn-mode { padding: 1.6rem 1.5rem !important; font-size: 1.25rem !important; }
+  .btn-mode-icon { font-size: 2.1rem !important; }
+  .balance-badge { font-size: 1.65rem !important; }
+  #qr-reader { max-width: 420px; margin: 0 auto; }
+}
+
+.section-card {
+  background: rgba(255,255,255,0.92);
+  border: none;
+  border-radius: 1.25rem;
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(6px);
+  overflow: hidden;
+}
+
+.screen { display: none; animation: fadeUp 0.35s ease; }
+.screen.active { display: block; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.menu-card { padding: 1.5rem 1.25rem; }
+
+.menu-heading {
+  font-family: 'Gowun Dodum', sans-serif;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  text-align: center;
+  color: var(--dano-green);
+  margin-bottom: 1.25rem;
+}
+
+.btn-mode {
+  width: 100%; border: none;
+  border-radius: 1.125rem;
+  padding: 1.35rem 1.25rem;
+  font-size: 1.15rem; font-weight: 600;
+  text-align: left;
+  display: flex; align-items: center; gap: 0.85rem;
+  transition: transform 0.15s, box-shadow 0.15s;
+  margin-bottom: 0.85rem;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+
+.btn-mode:last-child { margin-bottom: 0; }
+.btn-mode:active { transform: scale(0.98); }
+
+.btn-mode-earn  { background: linear-gradient(135deg,#2d6a4f,#52b788); color:#fff; }
+.btn-mode-earn:hover  { color:#fff; box-shadow:0 8px 24px rgba(45,106,79,0.35); }
+.btn-mode-spend { background: linear-gradient(135deg,#e07a5f,#f4a261); color:#fff; }
+.btn-mode-spend:hover { color:#fff; box-shadow:0 8px 24px rgba(224,122,95,0.35); }
+.btn-mode-check { background: linear-gradient(135deg,#3d5a80,#6b8cba); color:#fff; }
+.btn-mode-check:hover { color:#fff; box-shadow:0 8px 24px rgba(61,90,128,0.35); }
+
+.btn-mode-icon { font-size: 1.75rem; line-height: 1; flex-shrink: 0; }
+
+.btn-mode-text small {
+  display: block; font-size: 0.78rem;
+  font-weight: 400; opacity: 0.88; margin-top: 0.15rem;
+}
+
+.mode-banner {
+  padding: 1rem 1.25rem; border-radius: 1rem;
+  font-weight: 600; font-size: clamp(0.88rem,1.5vw,1rem);
+  display: flex; align-items: center; gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.mode-banner.earn  { background: linear-gradient(135deg,#d8f3dc,#b7e4c7); color:#1b4332; }
+.mode-banner.spend { background: linear-gradient(135deg,#fde2d4,#f4c4b0); color:#6d2e1f; }
+.mode-banner.check { background: linear-gradient(135deg,#dce8f5,#b8d0ea); color:#1a2f45; }
+
+.booth-pick-wrap { margin-bottom: 1rem; }
+
+.booth-pick-label {
+  font-size: 0.82rem; font-weight: 600;
+  color: var(--dano-blue); margin-bottom: 0.5rem;
+}
+
+.booth-pill {
+  border: 2px solid #e9ecef; border-radius: 0.875rem;
+  padding: 0.7rem 1rem; cursor: pointer;
+  background: #fff; font-weight: 500; font-size: 0.9rem;
+  transition: all 0.2s; margin-bottom: 0.45rem;
+}
+
+.booth-pill:last-child { margin-bottom: 0; }
+
+.booth-pill.selected {
+  border-color: var(--dano-pink); background: #fff5f2;
+  box-shadow: 0 0 0 3px rgba(224,122,95,0.18);
+}
+
+.scanner-wrap { padding: 1rem; margin-bottom: 1rem; }
+
+.scanner-label {
+  font-size: 0.9rem; font-weight: 600;
+  color: var(--dano-green); margin-bottom: 0.75rem;
+  display: flex; align-items: center; gap: 0.4rem;
+}
+
+#qr-reader {
+  width: 100%; border-radius: 1rem; overflow: hidden;
+  border: 2px dashed rgba(45,106,79,0.25); background: #f8faf9;
+}
+
+.scan-hint { font-size: 0.8rem; color: #6c757d; text-align: center; margin-top: 0.75rem; }
+
+.student-info-line { font-size: 1rem; line-height: 1.5; margin-top: 0.15rem; }
+.student-info-line strong { font-size: 1.25rem; font-weight: 700; color: #1b4332; }
+.student-info-grade-text { font-size: 0.95rem; color: #6c757d; font-weight: 400; }
+
+.balance-badge { font-size: 1.35rem; font-weight: 700; color: var(--dano-green); }
+.balance-badge .unit { font-size: 0.9rem; font-weight: 500; }
+.balance-badge .bi-coin { color: var(--dano-gold); font-size: 1.1rem; margin-right: 0.1rem; }
+
+.check-balance-wrap { text-align: center; padding: 2rem 1rem; }
+
+.check-balance-wrap .check-amount {
+  font-size: clamp(2.5rem, 6vw, 3.5rem);
+  font-weight: 700; color: var(--dano-green);
+  display: flex; align-items: center; justify-content: center; gap: 0.3rem;
+}
+
+.check-balance-wrap .check-amount .bi-coin { color: var(--dano-gold); font-size: 0.85em; }
+
+.check-balance-wrap .check-unit {
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  font-weight: 500; color: var(--dano-green-light);
+  margin-top: 0.25rem;
+}
+
+.tx-type-badge {
+  display: inline-block; font-size: 0.75rem; font-weight: 600;
+  padding: 0.25em 0.65em; border-radius: 2rem; margin-bottom: 0.75rem;
+}
+
+.tx-type-badge.earn  { background: #2d6a4f; color:#fff; }
+.tx-type-badge.spend { background: #e07a5f; color:#fff; }
+
+.form-label { font-weight: 600; font-size: 0.875rem; color: var(--dano-blue); }
+.form-label .bi-coin { color: var(--dano-gold); margin-right: 0.2rem; }
+
+.fixed-amount-display {
+  font-size: 1.4rem; font-weight: 700;
+  color: var(--dano-green); padding: 0.5rem 0 0.75rem;
+  display: flex; align-items: center; gap: 0.3rem;
+}
+
+.fixed-amount-display .bi-coin { color: var(--dano-gold); }
+
+.duplicate-warning {
+  color: #c0392b; font-weight: 600; font-size: 0.9rem;
+  margin-bottom: 0.75rem;
+  display: flex; align-items: center; gap: 0.35rem;
+}
+
+.btn-execute {
+  background: linear-gradient(135deg,var(--dano-green),var(--dano-green-light));
+  border: none; color: #fff; font-weight: 600;
+  padding: 0.85rem; border-radius: 0.875rem;
+  font-size: 1.05rem;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.btn-execute:hover:not(:disabled) {
+  background: linear-gradient(135deg,#1b4332,var(--dano-green));
+  color: #fff; transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(45,106,79,0.3);
+}
+
+.btn-execute:disabled { opacity: 0.55; }
+.btn-rescan    { border-radius: 0.875rem; font-weight: 500; }
+.btn-back-menu { border-radius: 0.875rem; font-weight: 500; font-size: 0.875rem; }
+
+.loading-overlay {
+  display: none; position: fixed; inset: 0;
+  background: rgba(27,67,50,0.35); z-index: 2000;
+  align-items: center; justify-content: center;
+}
+
+.loading-overlay.show { display: flex; }
+
+.status-bar { font-size: 0.78rem; color: #6c757d; text-align: center; margin-top: 1rem; }
+
+.modal-content { border: none; border-radius: 1.25rem; overflow: hidden; }
+.modal-icon { font-size: 3rem; margin-bottom: 0.5rem; }
+.modal-icon.success { color: var(--dano-green); }
+.modal-icon.error   { color: var(--dano-pink); }
+.modal-title-text { font-family: 'Gowun Dodum', sans-serif; font-size: 1.25rem; }
+
+#qr-reader__dashboard_section_csr span,
+#qr-reader__dashboard_section_swaplink { font-size: 0.8rem !important; }
+#qr-reader img[alt="Info icon"] { display: none; }
