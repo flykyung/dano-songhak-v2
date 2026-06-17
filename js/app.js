@@ -148,6 +148,13 @@ function enterPayPhase(info) {
       setStatus(info.name + ' 학생 — PIN을 입력하세요');
     }
 
+  } else if (state.boothKey === 'market') {
+    var badge = document.getElementById('txTypeBadge');
+    badge.textContent = '🛒 작은마켓'; badge.className = 'tx-type-badge spend';
+    document.getElementById('txBoothLabel').textContent = '작은마켓 (1단오 차감)';
+    showEl('marketAmountWrap', true);
+    setStatus(info.name + ' 학생 — PIN을 입력하세요');
+
   } else if (state.boothKey === 'food') {
     var badge = document.getElementById('txTypeBadge');
     badge.textContent = '🍡 음식 체험'; badge.className = 'tx-type-badge spend';
@@ -185,6 +192,10 @@ function executeTransaction() {
     amount   = 1;
     desc     = '창포비누';
     boothKey = 'soap';
+  } else if (state.boothKey === 'market') {
+    amount   = 1;
+    desc     = '작은마켓';
+    boothKey = '';
   } else if (state.boothKey === 'food') {
     var sel = document.getElementById('foodSelect');
     var opt = sel.options[sel.selectedIndex];
