@@ -182,7 +182,7 @@ function executeTransaction() {
 
   if (state.modeKey === 'earn') {
     amount   = Number(document.getElementById('amountInput').value);
-    desc     = '퀴즈를 맞추면 적립!';
+    desc     = '퀴즈 적립';
     boothKey = '';
     if (!amount || amount <= 0) {
       showModal(false, '입력 오류', '금액을 올바르게 입력해 주세요.');
