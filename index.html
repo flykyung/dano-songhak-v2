@@ -103,10 +103,11 @@
           <div class="fixed-amount-display"><i class="bi bi-coin"></i> 1 단오</div>
         </div>
 
-        <div id="marketAmountWrap" style="display:none;">
-          <div class="form-label"><i class="bi bi-coin"></i> 차감 금액</div>
-          <div class="fixed-amount-display"><i class="bi bi-coin"></i> 1 단오</div>
-        </div>
+        <div id="marketAmountWrap" class="mb-3" style="display:none;">
+  <label for="marketAmountInput" class="form-label"><i class="bi bi-coin"></i> 금액 (단오)</label>
+  <input type="number" class="form-control form-control-lg" id="marketAmountInput"
+         placeholder="예: 3" min="1" inputmode="numeric">
+</div>
 
         <div id="foodSelectWrap" style="display:none;" class="mb-3">
           <label for="foodSelect" class="form-label"><i class="bi bi-coin"></i> 메뉴 선택</label>
